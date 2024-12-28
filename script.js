@@ -8,15 +8,15 @@ const win_msg = document.querySelector(".pic");
 const continue_btn = document.querySelector(".winner button");
 
 let topics = ["school", "sports","countrys", 
-			"best persons", "1337~leet"];
+			"best persons", "1337~leet", "food"];
 let possible =  [
-	["student", "book", "class"],
-	["football", "bascket", "swiming"],
-	["morroco", "france", "russia"],
+	["student", "book", "class", "pencil"],
+	["football", "bascket", "swiming", "chess", "pingpong"],
+	["morroco", "france", "russia", "unitedstates", "japan"],
 	["adil", "jojo", "ferryat"],
-	["staff", "akaseck", "student"]
+	["staff", "akaseck", "student", "mac", "intra"],
+	["tajin","sushi", "tacos", "msmn"],
 ];
-
 let random_word = 0;
 let topic_rd = 0;
 let print_count = 0;
@@ -24,7 +24,7 @@ let answer = answer_p(possible);
 let question = "";
 let count_trys = answer.length;
 let keyBoards = "asdfghjklqwertyuiopzxcvbnm";
-let holder = [];
+let holder = array_c(count_trys);
 
 question = question_tp(topics);
 display_trys();
@@ -33,6 +33,8 @@ answer_place_displayer(answer, answer_ouput);
 keyBoards_displayer(keyBoards, keyborad_html);
 const keys = document.querySelectorAll(".t");
 
+//if i click any key this fonction take me to the function that check if 
+// i click the right character
 keys.forEach(e =>
 	{
 		e.addEventListener("click", ()=>
@@ -42,12 +44,14 @@ keys.forEach(e =>
 		});
 	}
 )
-
+// reaload the page if i click the button 
 Retry_button.addEventListener("click", ()=>
 {
 	window.location.reload();
 });
+// same here 
 continue_btn.addEventListener("click", ()=>
 {
 	window.location.reload();
 });
+
