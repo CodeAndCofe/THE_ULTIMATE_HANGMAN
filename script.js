@@ -7,15 +7,6 @@ const Retry_button = document.querySelector(".click button");
 const win_msg = document.querySelector(".pic");
 const continue_btn = document.querySelector(".winner button");
 
-
-let random_word = 0;
-let topic_rd = 0;
-let print_count = 0;
-let answer = "";
-let question = "";
-let count_trys = answer.length;
-let keyBoards = "asdfghjklqwertyuiopzxcvbnm";
-let holder = [];
 let topics = ["school", "sports","countrys", 
 			"best persons", "1337~leet"];
 let possible =  [
@@ -26,7 +17,15 @@ let possible =  [
 	["staff", "akaseck", "student"]
 ];
 
-answer = answer_p(possible);
+let random_word = 0;
+let topic_rd = 0;
+let print_count = 0;
+let answer = answer_p(possible);
+let question = "";
+let count_trys = answer.length;
+let keyBoards = "asdfghjklqwertyuiopzxcvbnm";
+let holder = [];
+
 question = question_tp(topics);
 display_trys();
 Qoutput.innerHTML = question;
