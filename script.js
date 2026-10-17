@@ -9,6 +9,7 @@ const restartButton = document.querySelector(".restart");
 const newRoundButton = document.querySelector(".new-round");
 
 const overlay = document.querySelector(".overlay");
+const overlayImage = document.querySelector(".overlay-image");
 const overlayTitle = document.querySelector(".overlay-title");
 const overlayText = document.querySelector(".overlay-text");
 const overlayActionButton = document.querySelector(".overlay-action");
@@ -66,13 +67,18 @@ function renderRound() {
   renderKeyboard();
 }
 
+
 function openOverlay() {
   overlay.classList.remove("hidden");
 
   if (currentRound.won) {
+    overlayImage.src = "jackpot.svg";
+    overlayImage.alt = "Jackpot celebration";
     overlayTitle.textContent = "You won!";
     overlayText.textContent = "Great work. Start a new round to keep your streak going.";
   } else {
+    overlayImage.src = "losingImage.jpeg";
+    overlayImage.alt = "Hangman style illustration";
     overlayTitle.textContent = "You lost this round";
     overlayText.textContent = `The word was \"${currentRound.answer}\". Try another one.`;
   }
