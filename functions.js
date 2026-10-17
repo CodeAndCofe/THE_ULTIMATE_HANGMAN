@@ -1,106 +1,89 @@
+const HANGMAN_SETS = [
+  {
+    topic: "School",
+    words: ["student", "notebook", "classroom", "pencil"]
+  },
+  {
+    topic: "Sports",
+    words: ["football", "basketball", "swimming", "chess", "pingpong"]
+  },
+  {
+    topic: "Countries",
+    words: ["morocco", "france", "russia", "japan", "canada"]
+  },
+  {
+    topic: "Food",
+    words: ["tajine", "sushi", "tacos", "pasta", "couscous"]
+  },
+  {
+    topic: "Technology",
+    words: ["keyboard", "laptop", "network", "browser", "server"]
+  },
+  {
+    topic: "Nature",
+    words: ["forest", "thunder", "desert", "volcano", "river"]
+  }
+];
 
-// display the answers : 
+const ALPHABET = "abcdefghijklmnopqrstuvwxyz";
 
-function answer_place_displayer(answer, answer_ouput)
-{
-	let i = 0;
-
-	while (i < answer.length)
-	{
-		answer_ouput.innerHTML += `<h1 class='el'>_</h1>`;
-		i++;
-	}
-}
-// display KeyBoards : 
-function keyBoards_displayer(keyBoards, keyborad_html)
-{
-	let i = 0;
-
-	while (i < keyBoards.length)
-	{
-		keyborad_html.innerHTML+= `<h1 class="t">${keyBoards[i]}</h1>`;
-		i++;
-	}
-}
-// check if elment or the character are in the anwer string 
-function find_the_elemnt(c, arr)
-{
-	let i = 0;
-	// while the character not equale any element of string increment until you be in end
-	while (c != arr[i] && i < arr.length -1 )
-		i++;
-	//string eqaual the holder skeep until wont equal or end of string
-	while (arr[i] == holder[i] && i < arr.length -1)
-		i++;
-	if (c == arr[i])
-	{
-		// save the element in holder array so you can use it againe 
-		holder[i] = arr[i];
-		output_it_into_anser_bar(c, i);
-		win(arr);
-	}
-	else
-		trys_manager();
+function randomFrom(array) {
+  return array[Math.floor(Math.random() * array.length)];
 }
 
-// outout/replace  the player answer in amswer place : 
-function output_it_into_anser_bar(c, index)
-{
-	document.querySelectorAll(".el")[index].innerHTML = c;
+function buildRound(wordSet) {
+  const set = randomFrom(wordSet);
+  const word = randomFrom(set.words).toLowerCase();
+
+  return {
+    topic: set.topic,
+    answer: word,
+    attemptsLeft: Math.max(6, Math.ceil(word.length * 0.8)),
+    guessed: new Set(),
+    solvedIndexes: new Set(),
+    usedLetters: new Set(),
+    completed: false,
+    won: false
+  };
 }
 
-// if trys == 0 the player loose:
-function trys_manager()
-{
-	count_trys -=1;
-	if (count_trys === 0)
-	{
-		count_trys = 0;
-		lose_screen.classList.add("you_lose");
-	}
-	display_trys();
+function getDisplayWord(round) {
+  return round.answer
+    .split("")
+    .map((letter, index) => (round.solvedIndexes.has(index) ? letter : "_"));
 }
 
-// how many trys left displayer
-function display_trys()
-{
-	nb_trys.innerHTML= count_trys;
+function letterExists(round, letter) {
+  return round.answer.includes(letter);
 }
 
-// winner checker
-function win()
-{
-	print_count++;
-	if (print_count == answer.length)
-		win_msg.classList.add("Allow");
-}
+function updateRoundWithGuess(round, letter) {
+  if (round.completed || round.usedLetters.has(letter)) {
+    return { hit: false, repeated: true };
+  }
 
-// what the anser genetator :
+  round.usedLetters.add(letter);
 
-function answer_p(possible)
-{
-	topic_rd = Math.floor(Math.random() * possible.length);
-	random_word = Math.floor(Math.random() * possible[topic_rd].length);
-	return (possible[topic_rd][random_word]);
-}
+  if (!letterExists(round, letter)) {
+    round.attemptsLeft -= 1;
+    if (round.attemptsLeft <= 0) {
+      round.attemptsLeft = 0;
+      round.completed = true;
+      round.won = false;
+    }
+    return { hit: false, repeated: false };
+  }
 
-// find topic question 
-function question_tp(topics)
-{
-	return (topics[topic_rd]);
-}
+  round.answer.split("").forEach((value, index) => {
+    if (value === letter) {
+      round.solvedIndexes.add(index);
+    }
+  });
 
+  if (round.solvedIndexes.size === round.answer.length) {
+    round.completed = true;
+    round.won = true;
+  }
 
-// creat array for holder  : 
-
-function array_c(count)
-{
-	let array = [];
-	let i = 0;
-	while (i < count)
-	{
-		array.push("");
-		i++;
-	}
-	return (array);
+  return { hit: true, repeated: false };
 }
