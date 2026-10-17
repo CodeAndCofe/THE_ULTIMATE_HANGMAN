@@ -1,16 +1,16 @@
 :root {
   color-scheme: light;
-  --bg: #101828;
-  --surface: #1f2937;
-  --surface-soft: #273548;
-  --text: #f8fafc;
-  --muted: #cbd5e1;
-  --accent: #38bdf8;
-  --accent-2: #22c55e;
-  --danger: #ef4444;
-  --warning: #f59e0b;
-  --radius: 16px;
-  --shadow: 0 18px 36px rgba(0, 0, 0, 0.35);
+  --page: #d3cece;
+  --surface: #dedada;
+  --surface-soft: #efeeee;
+  --text: #292525;
+  --muted: #625d5d;
+  --accent: #9b4e4c;
+  --accent-2: #3d8d50;
+  --danger: #a64949;
+  --warning: #9a701e;
+  --radius: 8px;
+  --shadow: 0 8px 20px rgba(72, 54, 54, 0.12);
 }
 
 * {
@@ -22,63 +22,61 @@
 body {
   min-height: 100vh;
   font-family: "Mulish", sans-serif;
-  background: radial-gradient(circle at 15% 10%, #273548, var(--bg));
+  background: var(--page);
   color: var(--text);
-  padding: 2rem 1rem;
+  padding: 0 1rem;
 }
 
 .game-shell {
-  max-width: 920px;
+  max-width: 700px;
+  min-height: 100vh;
   margin: 0 auto;
-  background: rgba(31, 41, 55, 0.82);
-  backdrop-filter: blur(6px);
-  border: 1px solid rgba(148, 163, 184, 0.25);
-  border-radius: 24px;
+  background: var(--surface);
   box-shadow: var(--shadow);
-  padding: clamp(1.25rem, 2vw + 0.6rem, 2.4rem);
+  padding: 2rem clamp(1.25rem, 5vw, 3rem);
   display: grid;
-  gap: 1.25rem;
+  align-content: start;
+  gap: 2rem;
+}
+
+.game-header {
+  text-align: center;
 }
 
 .game-header h1 {
-  font-size: clamp(1.8rem, 3.4vw, 2.6rem);
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
 }
 
 .tag {
-  color: var(--accent);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  font-weight: 700;
+  display: none;
 }
 
 .subtitle {
   color: var(--muted);
-  margin-top: 0.35rem;
+  margin-top: 0.45rem;
 }
 
 .status-row {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.8rem;
+  gap: 0.7rem;
 }
 
 .status-card {
-  background: var(--surface-soft);
-  border-radius: var(--radius);
-  padding: 0.85rem 1rem;
+  padding: 0.35rem 0.5rem;
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 0.25rem;
+  text-align: center;
 }
 
 .status-card span {
   color: var(--muted);
-  font-size: 0.86rem;
+  font-size: 0.82rem;
 }
 
 .status-card strong {
-  font-size: 1.05rem;
+  font-size: 1rem;
   word-break: break-word;
 }
 
@@ -88,42 +86,41 @@ body {
 
 .board,
 .keyboard-panel {
-  background: var(--surface-soft);
-  border-radius: var(--radius);
-  padding: 1rem;
+  padding: 1.25rem 0;
+  border-top: 1px solid rgba(98, 93, 93, 0.18);
 }
 
 .question {
-  font-size: 1.1rem;
-  margin-bottom: 0.85rem;
-  color: #e2e8f0;
+  font-size: 1.2rem;
+  margin-bottom: 1.25rem;
+  text-align: center;
 }
 
 .answer-slots {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.55rem;
-  margin-bottom: 0.9rem;
+  justify-content: center;
+  gap: 0.7rem;
+  margin-bottom: 1.25rem;
 }
 
 .slot {
-  min-width: 2.2rem;
-  height: 2.45rem;
-  border: 1px solid rgba(148, 163, 184, 0.4);
-  border-radius: 10px;
+  min-width: 2rem;
+  height: 2.35rem;
+  border-bottom: 2px solid var(--text);
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   font-weight: 800;
   text-transform: uppercase;
-  background: rgba(15, 23, 42, 0.36);
 }
 
 .message {
   min-height: 1.5rem;
   color: var(--muted);
   font-weight: 600;
+  text-align: center;
 }
 
 .message[data-tone="success"] {
@@ -140,63 +137,69 @@ body {
 
 .keyboard {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(42px, 1fr));
-  gap: 0.45rem;
-  margin-bottom: 1rem;
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .key {
-  border: 0;
-  border-radius: 10px;
-  padding: 0.52rem;
+  border: 1px solid rgba(98, 93, 93, 0.18);
+  border-radius: 5px;
+  padding: 0.55rem 0.35rem;
   text-transform: uppercase;
   font-weight: 700;
-  color: var(--text);
-  background: #334155;
+  color: #393333;
+  background: var(--surface-soft);
   cursor: pointer;
-  transition: transform 0.16s ease, background-color 0.16s ease;
+  transition: background-color 0.16s ease, color 0.16s ease;
 }
 
 .key:hover:not(:disabled) {
-  transform: translateY(-2px);
-  background: #3b82f6;
+  background: var(--accent);
+  color: #fff;
 }
 
 .key:disabled,
 .key.is-used {
   cursor: not-allowed;
-  background: #475569;
-  opacity: 0.5;
+  background: #c4bebe;
+  color: #857d7d;
+  opacity: 1;
 }
 
 .actions {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: 0.7rem;
 }
 
 .btn {
   border: 0;
-  border-radius: 999px;
-  padding: 0.62rem 1.1rem;
+  border-radius: 5px;
+  padding: 0.65rem 1.25rem;
   font-weight: 800;
   cursor: pointer;
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #38bdf8, #3b82f6);
-  color: #f8fafc;
+  background: var(--accent-2);
+  color: #fff;
 }
 
 .btn-secondary {
-  background: #334155;
-  color: #e2e8f0;
+  background: var(--accent);
+  color: #fff;
+}
+
+.btn:hover {
+  filter: brightness(1.08);
 }
 
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(2, 6, 23, 0.72);
+  background: rgba(70, 61, 61, 0.45);
   display: grid;
   place-items: center;
   padding: 1rem;
@@ -207,11 +210,11 @@ body {
 }
 
 .overlay-card {
-  background: #f8fafc;
-  color: #0f172a;
-  border-radius: 20px;
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 8px;
   width: min(460px, 100%);
-  padding: 1.1rem;
+  padding: 1.25rem;
   text-align: center;
   box-shadow: var(--shadow);
 }
@@ -220,8 +223,12 @@ body {
   width: 100%;
   max-height: 190px;
   object-fit: cover;
-  border-radius: 14px;
+  border-radius: 5px;
   margin-bottom: 1rem;
+}
+
+.hidden {
+  display: none;
 }
 
 .overlay-title {
@@ -230,17 +237,27 @@ body {
 }
 
 .overlay-text {
-  color: #334155;
+  color: var(--muted);
   margin-bottom: 0.85rem;
 }
 
 @media (max-width: 700px) {
   body {
-    padding: 1rem 0.6rem;
+    padding: 0;
   }
 
   .status-row {
     grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+
+  .game-shell {
+    padding: 1.5rem 1rem;
+    gap: 1.5rem;
+  }
+
+  .keyboard {
+    grid-template-columns: repeat(7, minmax(0, 1fr));
   }
 
   .actions .btn {

@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" role="img" aria-labelledby="title description">
+  <title id="title">Jackpot celebration</title>
+  <desc id="description">A colorful jackpot sign surrounded by gold coins and stars.</desc>
+  <rect width="800" height="450" rx="28" fill="#3d8d50"/>
+  <circle cx="105" cy="88" r="34" fill="#f7d154"/>
+  <circle cx="690" cy="105" r="28" fill="#f7d154"/>
+  <circle cx="650" cy="365" r="38" fill="#f7d154"/>
+  <path d="M105 172 118 205 153 207 126 229 135 263 105 243 75 263 84 229 57 207 92 205Z" fill="#fff2a8"/>
+  <path d="M680 198 691 224 719 226 697 243 704 271 680 255 656 271 663 243 641 226 669 224Z" fill="#fff2a8"/>
+  <rect x="142" y="112" width="516" height="226" rx="30" fill="#b94f42" stroke="#f7d154" stroke-width="12"/>
+  <rect x="172" y="142" width="456" height="166" rx="18" fill="#fff2a8"/>
+  <text x="400" y="215" text-anchor="middle" font-family="Arial, sans-serif" font-size="70" font-weight="800" fill="#b94f42">JACKPOT!</text>
+  <text x="400" y="270" text-anchor="middle" font-family="Arial, sans-serif" font-size="30" font-weight="700" fill="#3d8d50">YOU WIN</text>
+  <circle cx="180" cy="375" r="25" fill="#f7d154"/>
+  <circle cx="235" cy="395" r="25" fill="#f7d154"/>
+  <circle cx="295" cy="375" r="25" fill="#f7d154"/>
+</svg>

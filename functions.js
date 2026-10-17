@@ -1,27 +1,51 @@
 const HANGMAN_SETS = [
   {
     topic: "School",
-    words: ["student", "notebook", "classroom", "pencil"]
+    words: ["student", "notebook", "classroom", "pencil", "teacher", "library", "homework", "science"]
   },
   {
     topic: "Sports",
-    words: ["football", "basketball", "swimming", "chess", "pingpong"]
+    words: ["football", "basketball", "swimming", "chess", "pingpong", "tennis", "baseball", "volleyball", "cycling"]
   },
   {
     topic: "Countries",
-    words: ["morocco", "france", "russia", "japan", "canada"]
+    words: ["morocco", "france", "russia", "japan", "canada", "brazil", "germany", "egypt", "australia"]
   },
   {
     topic: "Food",
-    words: ["tajine", "sushi", "tacos", "pasta", "couscous"]
+    words: ["tajine", "sushi", "tacos", "pasta", "couscous", "pizza", "sandwich", "chocolate", "pancake"]
   },
   {
     topic: "Technology",
-    words: ["keyboard", "laptop", "network", "browser", "server"]
+    words: ["keyboard", "laptop", "network", "browser", "server", "website", "program", "internet", "database"]
   },
   {
     topic: "Nature",
-    words: ["forest", "thunder", "desert", "volcano", "river"]
+    words: ["forest", "thunder", "desert", "volcano", "river", "mountain", "rainbow", "island", "sunlight"]
+  },
+  {
+    topic: "Animals",
+    words: ["elephant", "giraffe", "penguin", "dolphin", "tiger", "rabbit", "monkey", "butterfly"]
+  },
+  {
+    topic: "Jobs",
+    words: ["doctor", "engineer", "artist", "farmer", "pilot", "teacher", "chef", "designer"]
+  },
+  {
+    topic: "Travel",
+    words: ["airport", "luggage", "holiday", "hotel", "journey", "passport", "ticket", "tourist"]
+  },
+  {
+    topic: "Music",
+    words: ["guitar", "piano", "singing", "concert", "melody", "rhythm", "drummer", "festival"]
+  },
+  {
+    topic: "Weather",
+    words: ["sunshine", "rainstorm", "snowflake", "cloudy", "breeze", "lightning", "rainfall", "temperature"]
+  },
+  {
+    topic: "Home",
+    words: ["kitchen", "bedroom", "window", "garden", "chair", "blanket", "mirror", "staircase"]
   }
 ];
 
